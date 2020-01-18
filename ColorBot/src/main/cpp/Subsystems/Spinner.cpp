@@ -28,7 +28,6 @@ AddChild("SpinnerMotor", std::static_pointer_cast<frc::VictorSP>(spinnerMotor));
     m_colorMatcher.AddColorMatch(kRedTarget);
     m_colorMatcher.AddColorMatch(kYellowTarget);
     m_colorMatcher.AddColorMatch(kWhiteTarget);
-    m_colorMatcher.AddColorMatch(kSkinTarget);
 
 
 }
@@ -58,13 +57,22 @@ void Spinner::Periodic() {
 
 void Spinner::DetectColor()
 {
-    frc::Color detectedColor = m_colorSensor.GetColor();
+
 
     /**
      * Run the color match algorithm on our detected color
      */
+      int counter = 0;
+      char previous;
+ 
+
+
+      while(counter < 8 )
+      {
+
+    frc::Color detectedColor = m_colorSensor.GetColor();
+    double confidence = 0.0;    
     std::string colorString;
-    double confidence = 0.0;
     frc::Color matchedColor = m_colorMatcher.MatchClosestColor(detectedColor, confidence);
 
     if (matchedColor == kBlueTarget) {
@@ -77,16 +85,38 @@ void Spinner::DetectColor()
       colorString = "Yellow";
     } else if(matchedColor == kWhiteTarget) {
       colorString = "White";
-    } else if(matchedColor == kSkinTarget) {
-      colorString = "skin";
     } else {
       colorString = "Unknown";
     }
 
-    frc::SmartDashboard::PutNumber("Red", detectedColor.red);
-    frc::SmartDashboard::PutNumber("Green", detectedColor.green);
-    frc::SmartDashboard::PutNumber("Blue", detectedColor.blue);
-    frc::SmartDashboard::PutNumber("Confidence", confidence);
-    frc::SmartDashboard::PutString("Detected Color", colorString);
+    spinnerMotor->Set(0.2);
+
+        frc::SmartDashboard::PutNumber("Counter", counter);
+        frc::SmartDashboard::PutString("Detected Color", colorString);
+
+        if(matchedColor == kBlueTarget)
+        {
+          
+          if(previous == 'x')
+          {
+            counter += 1;
+            previous = 'b';
+          }
+          else
+          {
+            previous ='b';
+          }
+        
+        }
+
+        if(matchedColor == kRedTarget || matchedColor == kGreenTarget || matchedColor == kYellowTarget || matchedColor == kWhiteTarget)
+        {
+           previous = 'x';
+        }
+
+      }
+
+spinnerMotor->Set(0.00);
+
 
 }

@@ -57,7 +57,6 @@ Spinner();
   static constexpr frc::Color kRedTarget = frc::Color(0.561, 0.232, 0.114);
   static constexpr frc::Color kYellowTarget = frc::Color(0.361, 0.524, 0.113);
   static constexpr frc::Color kWhiteTarget = frc::Color(0.383, 0.453, 0.162);
-  static constexpr frc::Color kSkinTarget = frc::Color(0.466, 0.411, 0.121);
 
 void DetectColor();
 
