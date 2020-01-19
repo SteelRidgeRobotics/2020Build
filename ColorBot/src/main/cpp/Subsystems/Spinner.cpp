@@ -58,24 +58,18 @@ void Spinner::Periodic() {
 void Spinner::DetectColor()
 {
 
+  int counter = 0; //create a counter to count how many rotations of the spinner we have made
+  bool same = true; //used for checking if the first color we see is the same as we see now
+  double confidence = 0.0; // used only for setting up the color matcher 
+  const frc::Color initialColor = m_colorMatcher.MatchClosestColor(m_colorSensor.GetColor(), confidence);
 
-    /**
-     * Run the color match algorithm on our detected color
-     */
-      int counter = 0;
-      char previous;
- 
+  while(counter < rotations)
+  {
 
-
-      while(counter < 8 )
-      {
-
-    frc::Color detectedColor = m_colorSensor.GetColor();
-    double confidence = 0.0;    
     std::string colorString;
-    frc::Color matchedColor = m_colorMatcher.MatchClosestColor(detectedColor, confidence);
+    frc::Color matchedColor = m_colorMatcher.MatchClosestColor(m_colorSensor.GetColor(), confidence);
 
-    if (matchedColor == kBlueTarget) {
+    if (matchedColor == kBlueTarget){
       colorString = "Blue";
     } else if (matchedColor == kRedTarget) {
       colorString = "Red";
@@ -83,40 +77,44 @@ void Spinner::DetectColor()
       colorString = "Green";
     } else if (matchedColor == kYellowTarget) {
       colorString = "Yellow";
-    } else if(matchedColor == kWhiteTarget) {
+    }else if(matchedColor == kWhiteTarget) {
       colorString = "White";
     } else {
       colorString = "Unknown";
     }
 
-    spinnerMotor->Set(0.2);
+    //pervious section used for sending data to the smart dashboard. used for troubleshooting, may remove later
 
-        frc::SmartDashboard::PutNumber("Counter", counter);
-        frc::SmartDashboard::PutString("Detected Color", colorString);
+    spinnerMotor->Set(motorSpeed);
 
-        if(matchedColor == kBlueTarget)
-        {
+    frc::SmartDashboard::PutNumber("Counter", counter);
+    frc::SmartDashboard::PutString("Detected Color", colorString);
+
+    if(matchedColor == initialColor)
+    {
           
-          if(previous == 'x')
-          {
-            counter += 1;
-            previous = 'b';
-          }
-          else
-          {
-            previous ='b';
-          }
-        
-        }
-
-        if(matchedColor == kRedTarget || matchedColor == kGreenTarget || matchedColor == kYellowTarget || matchedColor == kWhiteTarget)
-        {
-           previous = 'x';
-        }
-
+      if(!same) //if we are on the initial color and the last color we have seen was not the initial. 
+      {
+        counter += increment;
+        same = true; //saying the color we are reading now is the same as the one we just read previously. 
       }
+      else
+      {
+        same = true;
+      }
+        
+    }
+
+    if(!(matchedColor == initialColor))
+    {
+      same = false;
+    }
+
+  }
 
 spinnerMotor->Set(0.00);
+frc::SmartDashboard::PutNumber("Counter", counter);
+
 
 
 }
