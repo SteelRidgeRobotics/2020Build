@@ -111,20 +111,23 @@ void Drivetrain::userDrive(std::shared_ptr<frc::Joystick>drivecontroller)
 	frontLeft->Set(ControlMode::PercentOutput, left_y);
 	frontRight->Set(ControlMode::PercentOutput, right_y);
 
-    frc::SmartDashboard::PutNumber("Left Encoder", getEncoderRotations(0));
-    frc::SmartDashboard::PutNumber("Light Encoder", getEncoderRotations(1));
+    frc::SmartDashboard::PutNumber("Left Encoder Raw", getEncoderRotations(0));
+    frc::SmartDashboard::PutNumber("Right Encoder Raw", getEncoderRotations(1));
+    frc::SmartDashboard::PutNumber("Left Rotations", ticksToRotations(getEncoderRotations(0)));
+    frc::SmartDashboard::PutNumber("Right Rotations", ticksToRotations(getEncoderRotations(1)));
+
 }
 
 double Drivetrain::getEncoderRotations(int encoder)
 {
     if (encoder == 0)
     {
-        return frontLeft->GetSelectedSensorPosition(0);
+        return frontLeft->GetSelectedSensorPosition();
     }
 
     if (encoder == 1)
     {
-        return frontRight->GetSelectedSensorPosition(0);
+        return frontRight->GetSelectedSensorPosition();
     }
 
     else {return 0;}
@@ -135,4 +138,9 @@ void Drivetrain::encoderReset()
 {
     frontLeft->SetSelectedSensorPosition(0, 0, kTimeoutMs);
     frontRight->SetSelectedSensorPosition(0, 0, kTimeoutMs);
+}
+
+double Drivetrain::ticksToRotations(int ticks)
+{
+    return ticks/sensorResolution;
 }
