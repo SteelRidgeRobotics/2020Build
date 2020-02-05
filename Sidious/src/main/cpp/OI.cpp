@@ -16,6 +16,8 @@
 #include "Commands/AutonomousCommand.h"
 #include "Commands/DriveWithJoystick.h"
 #include "Commands/EncoderDrive.h"
+#include "Commands/LimelightOff.h"
+#include "Commands/LimelightTrack.h"
 #include "Commands/ManualClimber.h"
 #include "Commands/ManualIntake.h"
 #include "Commands/ManualShooter.h"
@@ -31,9 +33,10 @@ systemsController.reset(new frc::Joystick(1));
 driveController.reset(new frc::Joystick(0));
 
 mc_B.reset(new frc::JoystickButton(driveController.get(), 2));
-mc_B->WhenPressed(new EncoderDrive(10.0, 10.0));
+mc_B->WhenPressed(new EncoderDrive(0, 0));
 
     // SmartDashboard Buttons
+    frc::SmartDashboard::PutData("LimelightOff", new LimelightOff());
     frc::SmartDashboard::PutData("ManualClimber", new ManualClimber());
     frc::SmartDashboard::PutData("ManualShooter", new ManualShooter());
     frc::SmartDashboard::PutData("ManualIntake", new ManualIntake());
