@@ -45,7 +45,7 @@ Shooter();
 
 	void StopShooter();
 
-	double VelocityToTicks(double ticks);
+	double VelocityToTicks(double velocity);
 
 	double velocityTarget;
 

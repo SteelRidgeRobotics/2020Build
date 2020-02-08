@@ -74,19 +74,37 @@ Drivetrain();
 
 	static constexpr double kF_CloopLeft = 0.0; //Feed forward gain
 
-	static constexpr double kP_CloopLeft = 0.1; //Proportional gain. This is just a start and needs tuning.
+	static constexpr double kP_CloopLeft = 0.161; //Proportional gain. This is just a start and needs tuning.
 
 	static constexpr double kI_CloopLeft = 0.0; //Integral gain
 
-	static constexpr double kD_CloopLeft = 0.0; // Derivative gain
+	static constexpr double kD_CloopLeft = 0.0732; // Derivative gain
 
 	static constexpr double kF_CloopRight = 0.0; //Feed forward gain
 
-	static constexpr double kP_CloopRight = 0.1; //Proportional gain. This is just a start and needs tuning.
+	static constexpr double kP_CloopRight = 0.161; //Proportional gain. This is just a start and needs tuning.
 
 	static constexpr double kI_CloopRight = 0.0; //Integral gain
 
-	static constexpr double kD_CloopRight = 0.0; // Derivative gain
+	static constexpr double kD_CloopRight = 0.0732; // Derivative gain
+
+	/*
+	static constexpr double kF_CloopLeft = 0.0; //Feed forward gain
+
+	static constexpr double kP_CloopLeft = 1.72; //Proportional gain. This is just a start and needs tuning.
+
+	static constexpr double kI_CloopLeft = 0.0; //Integral gain
+
+	static constexpr double kD_CloopLeft = 0.783; // Derivative gain
+
+	static constexpr double kF_CloopRight = 0.0; //Feed forward gain
+
+	static constexpr double kP_CloopRight = 1.72; //Proportional gain. This is just a start and needs tuning.
+
+	static constexpr double kI_CloopRight = 0.0; //Integral gain
+
+	static constexpr double kD_CloopRight = 0.783; // Derivative gain
+	*/
 
 	//Motion Profile PID_F constants
 

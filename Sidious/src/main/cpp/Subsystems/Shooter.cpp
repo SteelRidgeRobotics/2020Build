@@ -82,11 +82,11 @@ void Shooter::StopShooter()
 
 }
 
-double Shooter::VelocityToTicks(double ticks)
+double Shooter::VelocityToTicks(double velocity)
 {
 
-    ticks = ticks / 2048;
+   velocity = velocity * 2048;
 
-    return ticks;
+    return velocity;
 
 }
