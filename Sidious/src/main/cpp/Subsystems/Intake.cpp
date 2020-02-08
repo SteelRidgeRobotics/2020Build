@@ -55,3 +55,28 @@ void Intake::Periodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void Intake::intakeDown()
+{
+    leftIntakeSolenoid->Set(frc::DoubleSolenoid::kForward);
+    rightIntakeSolenoid->Set(frc::DoubleSolenoid::kForward);
+
+}
+
+void Intake::intakeUp()
+{
+    leftIntakeSolenoid->Set(frc::DoubleSolenoid::kReverse);
+    rightIntakeSolenoid->Set(frc::DoubleSolenoid::kReverse);
+
+
+}
+
+void Intake::intakeStop()
+{
+    intakeMotor->Set(0.0);
+
+}
+void Intake::intakeRun()
+{
+    intakeMotor->Set(intakeSpeed);
+
+}
