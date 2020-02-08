@@ -25,6 +25,12 @@ LimelightTrack::LimelightTrack(): frc::Command() {
 // Called just before this Command runs the first time
 void LimelightTrack::Initialize() {
 
+std::cout << "Limelight Tracking!" << std::endl;
+
+Robot::vision->setCameraMode(0);
+Robot::vision->setLedMode(3);
+Robot::vision->setPipeline(1);
+
 m_steeringKP = frc::SmartDashboard::GetNumber("Steering KP", 0.0);
 m_targetArea = frc::SmartDashboard::GetNumber("min TA", 0.0);
 m_driveKP = frc::SmartDashboard::GetNumber("Driving KP", 0.0);
@@ -37,22 +43,22 @@ frc::SmartDashboard::PutNumber("Right", 10000);
 // Called repeatedly when this Command is scheduled to run
 void LimelightTrack::Execute() {
 
-double right = Robot::vision->getTx()*m_steeringKP; // Right Y
-double left  = (m_targetArea-Robot::vision->getTa())*m_driveKP; // Left X
+double steer = Robot::vision->getTx()*m_steeringKP; // Right Y
+double drive  = (m_targetArea-Robot::vision->getTa())*m_driveKP; // Left X
 frc::SmartDashboard::PutNumber("target area", Robot::vision->getTa());
-frc::SmartDashboard::PutNumber("Left", left);
-frc::SmartDashboard::PutNumber("Right", right);
+frc::SmartDashboard::PutNumber("Drive", drive);
+frc::SmartDashboard::PutNumber("Steer", steer);
     if (Robot::vision->getTv()) {
       if (Robot::vision->getTa() >= m_targetArea) {
-        left = 0;
-        right = 0;
+        drive = 0;
+        steer = 0;
       }
     } else {
-     left = 0;
-     right = 0;
+     drive = 0;
+     steer = 0;
     }
 
-    Robot::drivetrain->autoDrive(left, right);
+    Robot::drivetrain->autoDrive(drive, steer);
   }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -63,6 +69,8 @@ bool LimelightTrack::IsFinished() {
 // Called once after isFinished returns true
 void LimelightTrack::End() {
     Robot::drivetrain->autoDrive(0.0, 0.0);
+    Robot::vision->setLedMode(0);
+
 }
 
 // Called when another command which requires one or more of the same
