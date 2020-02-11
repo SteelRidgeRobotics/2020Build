@@ -18,6 +18,7 @@
 #include "Commands/ClimbPull.h"
 #include "Commands/ClimberPistonIn.h"
 #include "Commands/ClimberPistonOut.h"
+#include "Commands/ClimberWiinchReverse.h"
 #include "Commands/ClimberWinchRun.h"
 #include "Commands/ClimberWinchStop.h"
 #include "Commands/ConveyorOff.h"
@@ -25,7 +26,9 @@
 #include "Commands/DriveWithJoystick.h"
 #include "Commands/EncoderDrive.h"
 #include "Commands/IntakeDown.h"
+#include "Commands/IntakeRun.h"
 #include "Commands/IntakeSequence.h"
+#include "Commands/IntakeStop.h"
 #include "Commands/IntakeUp.h"
 #include "Commands/LimelightOff.h"
 #include "Commands/LimelightTrack.h"
@@ -55,6 +58,7 @@ mc_B.reset(new frc::JoystickButton(driveController.get(), 2));
 mc_B->WhenPressed(new EncoderDrive(0, 0));
 
     // SmartDashboard Buttons
+    frc::SmartDashboard::PutData("IntakeRun", new IntakeRun());
     frc::SmartDashboard::PutData("LimelightOff", new LimelightOff());
     frc::SmartDashboard::PutData("ManualClimber", new ManualClimber());
     frc::SmartDashboard::PutData("ManualIntake", new ManualIntake());

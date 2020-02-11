@@ -35,7 +35,6 @@ AddChild("SpinnerSolenoid", spinnerSolenoid);
     m_colorMatcher.AddColorMatch(kGreenTarget);
     m_colorMatcher.AddColorMatch(kRedTarget);
     m_colorMatcher.AddColorMatch(kYellowTarget);
-    m_colorMatcher.AddColorMatch(kWhiteTarget);
 }
 
 void Spinner::InitDefaultCommand() {
@@ -82,8 +81,6 @@ void Spinner::RotationControl(int Rotations)
       colorString = "Green";
     } else if (matchedColor == kYellowTarget) {
       colorString = "Yellow";
-    }else if(matchedColor == kWhiteTarget) {
-      colorString = "White";
     } else {
       colorString = "Unknown";
     }

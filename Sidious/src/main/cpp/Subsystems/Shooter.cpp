@@ -90,3 +90,33 @@ double Shooter::VelocityToTicks(double velocity)
     return velocity;
 
 }
+
+void Shooter::manualShooter(std::shared_ptr<frc::Joystick>systemsController)
+{
+    //ok, ok, ok, ahaha, ok um, you are stressing me out, stop doing that, enter
+
+    double Rtrigger = systemsController->GetRawAxis(3);
+    double Ltrigger = systemsController->GetRawAxis(2);
+
+    if (fabs(Rtrigger) < 0.1)
+    {
+        Rtrigger = 0.0;
+    }
+
+    if (fabs(Ltrigger) < 0.1)
+    {
+        Ltrigger = 0.0;
+    }
+
+    if(Rtrigger > 0.1 && !(Ltrigger > 0.1))
+
+    {
+        leftFalcon->Set(ControlMode::PercentOutput, Rtrigger);
+    }
+
+    if(Ltrigger > 0.1 && !(Rtrigger > 0.1))
+    {
+        leftFalcon->Set(ControlMode::PercentOutput, (Ltrigger * -1));
+    }
+
+}
