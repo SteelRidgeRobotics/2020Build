@@ -13,7 +13,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: &id002 [CANID]
-          value: '0'
+          value: '4'
       Base: Talon FX
       Name: LeftShooterMotor
     - Children: []
@@ -23,7 +23,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '1'
+          value: '5'
       Base: Talon FX
       Name: RightShooterMotor
     Properties:
