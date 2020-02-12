@@ -29,7 +29,7 @@ void IntakeStop::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void IntakeStop::Execute() {
 
-    Robot::intake->intakeUp();
+    Robot::intake->intakeStop();
 
 }
 

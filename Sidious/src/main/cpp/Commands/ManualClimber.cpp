@@ -46,3 +46,5 @@ void ManualClimber::End() {
 void ManualClimber::Interrupted() {
 
 }
+
+
