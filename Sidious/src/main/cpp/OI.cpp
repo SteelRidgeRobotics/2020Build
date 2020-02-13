@@ -26,10 +26,11 @@
 #include "Commands/DriveWithJoystick.h"
 #include "Commands/EncoderDrive.h"
 #include "Commands/IntakeDown.h"
+#include "Commands/IntakeDownSequence.h"
 #include "Commands/IntakeRun.h"
-#include "Commands/IntakeSequence.h"
 #include "Commands/IntakeStop.h"
 #include "Commands/IntakeUp.h"
+#include "Commands/IntakeUpSequence.h"
 #include "Commands/LimelightOff.h"
 #include "Commands/LimelightTrack.h"
 #include "Commands/ManualClimber.h"
@@ -49,7 +50,7 @@ systemsController.reset(new frc::Joystick(1));
 b.reset(new frc::JoystickButton(systemsController.get(), 2));
 b->WhileHeld(new ShootSequence());
 a.reset(new frc::JoystickButton(systemsController.get(), 1));
-a->WhileHeld(new IntakeSequence());
+a->WhileHeld(new IntakeDownSequence());
 driveController.reset(new frc::Joystick(0));
 
 mc_Rbump.reset(new frc::JoystickButton(driveController.get(), 6));
