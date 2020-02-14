@@ -48,14 +48,19 @@ double drive  = (m_targetArea-Robot::vision->getTa())*m_driveKP; // Left X
 frc::SmartDashboard::PutNumber("target area", Robot::vision->getTa());
 frc::SmartDashboard::PutNumber("Drive", drive);
 frc::SmartDashboard::PutNumber("Steer", steer);
-    if (Robot::vision->getTv()) {
-      if (Robot::vision->getTa() >= m_targetArea) {
+
+    if (Robot::vision->getTv()) 
+    {
+      if (Robot::vision->getTa() >= m_targetArea) 
+      {
         drive = 0;
         steer = 0;
       }
-    } else {
+    } 
+    else
+    {
      drive = 0;
-     steer = 0;
+     steer = 0.2;
     }
 
     Robot::drivetrain->autoDrive(drive, steer);

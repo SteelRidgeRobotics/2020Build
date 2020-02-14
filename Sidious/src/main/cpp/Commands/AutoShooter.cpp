@@ -30,6 +30,8 @@ void AutoShooter::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutoShooter::Execute() {
 
+    Robot::shooter->AutoShooter(500);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

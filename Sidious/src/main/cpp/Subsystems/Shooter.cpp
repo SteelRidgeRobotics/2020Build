@@ -68,10 +68,10 @@ void Shooter::Periodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Shooter::AutoShooter()
+void Shooter::AutoShooter(double velocity)
 {
 
-    leftFalcon->Set(ControlMode::Velocity, VelocityToTicks(velocityTarget));
+    leftFalcon->Set(ControlMode::Velocity, VelocityToTicks(velocity));
 
 }
 
@@ -85,15 +85,16 @@ void Shooter::StopShooter()
 double Shooter::VelocityToTicks(double velocity)
 {
 
-   velocity = velocity * 2048;
+   velocity = velocity * 2048 * kGearRatio;
 
     return velocity;
 
 }
 
+
+/*
 void Shooter::manualShooter(std::shared_ptr<frc::Joystick>systemsController)
 {
-    //ok, ok, ok, ahaha, ok um, you are stressing me out, stop doing that, enter
 
     double Rtrigger = systemsController->GetRawAxis(3);
     double Ltrigger = systemsController->GetRawAxis(2);
@@ -120,3 +121,5 @@ void Shooter::manualShooter(std::shared_ptr<frc::Joystick>systemsController)
     }
 
 }
+
+*/
