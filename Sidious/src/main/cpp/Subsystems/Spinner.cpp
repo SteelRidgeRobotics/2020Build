@@ -121,4 +121,31 @@ frc::SmartDashboard::PutNumber("Counter", counter);
 
 }
 
+void PositionControl()
+{
 
+  std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+  
+  if (gameData.length() > 0)
+  {
+    switch(gameData[0])
+    {
+      case 'B':
+        //Blue case code
+        break;
+      case 'R':
+        //Green case cocde
+        break;
+      case 'Y':
+        //Yellow case code
+        break;
+      default:
+        //This is corrupt data
+        break;
+    }
+  }
+  else
+  {
+    //Code for no data recieved yet
+  }
+}
