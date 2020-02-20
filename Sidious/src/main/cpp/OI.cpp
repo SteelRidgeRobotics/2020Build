@@ -22,6 +22,8 @@
 #include "Commands/ClimberWinchRun.h"
 #include "Commands/ClimberWinchStop.h"
 #include "Commands/ConveyorOff.h"
+#include "Commands/ConveyorPistonIn.h"
+#include "Commands/ConveyorPistonOut.h"
 #include "Commands/ConveyorRun.h"
 #include "Commands/DriveWithJoystick.h"
 #include "Commands/EncoderDrive.h"

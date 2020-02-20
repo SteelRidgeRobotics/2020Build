@@ -77,6 +77,7 @@ void Intake::intakeStop()
     intakeMotor->Set(0.0);
 
 }
+
 void Intake::intakeRun()
 {
     intakeMotor->Set(intakeSpeed);

@@ -149,3 +149,16 @@ void PositionControl()
     //Code for no data recieved yet
   }
 }
+
+void Spinner::RotationControlEnocder(double Rotations)
+{
+
+  while(spinnerMotor->GetSelectedSensorPosition() < Rotations)
+  {
+    spinnerMotor->Set(ControlMode::PercentOutput, 0.2);
+  }
+
+  spinnerMotor->Set(ControlMode::PercentOutput, 0.0);
+
+
+}
