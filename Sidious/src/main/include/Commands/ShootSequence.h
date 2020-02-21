@@ -14,9 +14,11 @@
 
 #include "frc/commands/CommandGroup.h"
 
-#include "Commands/AutoShooter.h"
+#include "Commands/RunShooter.h"
 
 #include "Commands/ConveyorRun.h"
+
+#include "Commands/ConveyorPistonIn.h"
 
 /**
  *

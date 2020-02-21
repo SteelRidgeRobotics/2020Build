@@ -47,11 +47,8 @@ Intake();
 
 	void intakeUp();
 
-	void intakeRun();
-
-	void intakeStop();
+	void intakeRun(double speed);
 
 
-	double intakeSpeed = 0.1;
 };
 

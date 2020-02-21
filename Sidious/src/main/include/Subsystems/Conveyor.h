@@ -44,8 +44,6 @@ Conveyor();
 
 	void ConveyorRun(double conveyorSpeed);
 
-	void ConveyorStop();
-
 	void ConveyorPistonOut();
 
 	void ConveyorPistonIn();

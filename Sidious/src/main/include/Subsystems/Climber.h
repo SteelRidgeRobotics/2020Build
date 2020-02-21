@@ -47,10 +47,7 @@ Climber();
 
 	void PistonsIn();
 	
-	void WinchForward();
+	void WinchRun(double speed);
 	
-	void WinchBackward();
-	
-	void WinchStop();
 };
 

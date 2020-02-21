@@ -72,14 +72,8 @@ void Intake::intakeUp()
 
 }
 
-void Intake::intakeStop()
+void Intake::intakeRun(double speed)
 {
-    intakeMotor->Set(0.0);
-
-}
-
-void Intake::intakeRun()
-{
-    intakeMotor->Set(intakeSpeed);
+    intakeMotor->Set(speed);
 
 }
