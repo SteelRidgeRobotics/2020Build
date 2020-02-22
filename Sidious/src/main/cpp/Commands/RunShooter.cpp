@@ -31,7 +31,7 @@ void RunShooter::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void RunShooter::Execute() {
 
-    Robot::shooter->RunShooter(m_velocity);
+    Robot::shooter->RunShooterAtVelocity(m_velocity);
 
 }
 

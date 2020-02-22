@@ -70,7 +70,7 @@ void Shooter::Periodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Shooter::RunShooter(double velocity)
+void Shooter::RunShooterAtVelocity(double velocity)
 {
 
     leftFalcon->Set(ControlMode::Velocity, VelocityToTicks(velocity));
