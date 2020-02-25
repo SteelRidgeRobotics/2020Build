@@ -38,6 +38,8 @@ void TimedConveyorPistonIn::Execute() {
 // Called once after command times out
 void TimedConveyorPistonIn::End() {
 
+    Robot::conveyor->ConveyorPistonOut();
+
 }
 
 // Called when another command which requires one or more of the same

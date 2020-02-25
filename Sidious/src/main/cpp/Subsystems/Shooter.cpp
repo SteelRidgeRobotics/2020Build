@@ -73,23 +73,28 @@ void Shooter::Periodic() {
 void Shooter::RunShooterAtVelocity(double velocity)
 {
 
+if(velocity > 0)
+{
     leftFalcon->Set(ControlMode::Velocity, VelocityToTicks(velocity));
 
 }
 
-void Shooter::StopShooter()
+else
 {
-
     leftFalcon->Set(ControlMode::PercentOutput, 0.0);
+}
 
 }
+
 
 double Shooter::VelocityToTicks(double velocity)
 {
 
-   velocity = velocity * 2048 * kGearRatio;
+    double _velocity;
 
-    return velocity;
+   _velocity = velocity * 2048 * kGearRatio;
+
+    return _velocity;
 
 }
 

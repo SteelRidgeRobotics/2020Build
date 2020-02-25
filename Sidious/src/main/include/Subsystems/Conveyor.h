@@ -50,13 +50,13 @@ Conveyor();
 
 	int mTimeout = 30;
 
-	double kF;
+	double kF = 1.05;
 
-	double kP;
+	double kP = 0.0;
 
-	double kI;
+	double kI = 0.0;
 
-	double kD;
+	double kD = 0.0;
 
 	
 
