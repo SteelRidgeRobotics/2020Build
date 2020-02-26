@@ -20,7 +20,7 @@ ShootSequence::ShootSequence() {
      // Add Commands here:
     // e.g. AddSequential(new Command1());
 
-     AddSequential(new RunShooter(250.0));
+     AddSequential(new RunShooter(25.0));
 
      //AddSequential(new ConveyorPistonIn());
 
