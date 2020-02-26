@@ -82,7 +82,7 @@ frontRight->Config_kI(kSlotIDx_Cloop, kI_CloopRight, kTimeoutMs);
 frontRight->Config_kD(kSlotIDx_Cloop, kD_CloopRight, kTimeoutMs);
 
      /*Configure PID_F for Motion Profile */
-
+/*
 frontLeft->Config_kF(kSlotIDx_Motion, kF_MotionLeft, kTimeoutMs);
 frontLeft->Config_kP(kSlotIDx_Motion, kP_MotionLeft, kTimeoutMs);
 frontLeft->Config_kI(kSlotIDx_Motion, kI_MotionLeft, kTimeoutMs);
@@ -92,7 +92,7 @@ frontRight->Config_kF(kSlotIDx_Motion, kF_MotionRight, kTimeoutMs);
 frontRight->Config_kP(kSlotIDx_Motion, kP_MotionRight, kTimeoutMs);
 frontRight->Config_kI(kSlotIDx_Motion, kI_MotionRight, kTimeoutMs);
 frontRight->Config_kD(kSlotIDx_Motion, kD_MotionRight, kTimeoutMs);
-
+*/
 
 }
 

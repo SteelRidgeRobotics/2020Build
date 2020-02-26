@@ -32,7 +32,7 @@ void TimedShooter::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TimedShooter::Execute() {
 
-    Robot::shooter->RunShooterAtVelocity(500);
+    Robot::shooter->RunShooterAtVelocity(250.0);
 }
 
 // Called once after command times out

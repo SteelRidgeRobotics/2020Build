@@ -78,27 +78,27 @@ Drivetrain();
 
 	static const int kSlotIDx_Cloop = 0; //Talon controller slot for CL
 
-	static const int kSlotIDx_Motion = 1; //Talon controller slot 1 for MP
+	//static const int kSlotIDx_Motion = 1; //Talon controller slot 1 for MP
 
-	static const int kProfilePeriodMs = 50; //Motion Profile period between points
+	//static const int kProfilePeriodMs = 50; //Motion Profile period between points
 
 	//Closed Loop PID_F constants
 
 	static constexpr double kF_CloopLeft = 0.0; //Feed forward gain
 
-	static constexpr double kP_CloopLeft = 0.161; //Proportional gain. This is just a start and needs tuning.
+	static constexpr double kP_CloopLeft = 0.0; //Proportional gain. This is just a start and needs tuning.
 
 	static constexpr double kI_CloopLeft = 0.0; //Integral gain
 
-	static constexpr double kD_CloopLeft = 0.0732; // Derivative gain
+	static constexpr double kD_CloopLeft = 0.00; // Derivative gain
 
 	static constexpr double kF_CloopRight = 0.0; //Feed forward gain
 
-	static constexpr double kP_CloopRight = 0.161; //Proportional gain. This is just a start and needs tuning.
+	static constexpr double kP_CloopRight = 0.0; //Proportional gain. This is just a start and needs tuning.
 
 	static constexpr double kI_CloopRight = 0.0; //Integral gain
 
-	static constexpr double kD_CloopRight = 0.0732; // Derivative gain
+	static constexpr double kD_CloopRight = 0.0; // Derivative gain
 
 	/*
 	static constexpr double kF_CloopLeft = 0.0; //Feed forward gain
@@ -116,7 +116,7 @@ Drivetrain();
 	static constexpr double kI_CloopRight = 0.0; //Integral gain
 
 	static constexpr double kD_CloopRight = 0.783; // Derivative gain
-	*/
+	
 
 	//Motion Profile PID_F constants
 
@@ -135,6 +135,8 @@ Drivetrain();
 	static constexpr double kI_MotionRight = 0.0; //Integral gain
 
 	static constexpr double kD_MotionRight = 0.0; // Derivative gain
+
+	*/
 
 	double l_pos;
 	double r_pos;

@@ -58,7 +58,7 @@ sc_Y->WhenPressed(new SpinnerPositionControl());
 sc_Rbump.reset(new frc::JoystickButton(systemsController.get(), 6));
 sc_Rbump->WhileHeld(new ClimberWinchRun(0.33));
 sc_B.reset(new frc::JoystickButton(systemsController.get(), 2));
-sc_B->WhileHeld(new ShootSequence());
+sc_B->WhileHeld(new RunShooter(250.00));
 sc_A.reset(new frc::JoystickButton(systemsController.get(), 1));
 sc_A->WhileHeld(new IntakeDownSequence());
 driveController.reset(new frc::Joystick(0));

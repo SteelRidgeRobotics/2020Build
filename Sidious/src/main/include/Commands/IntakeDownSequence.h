@@ -15,6 +15,7 @@
 #include "frc/commands/CommandGroup.h"
 #include "Commands/IntakeRun.h"
 #include "Commands/IntakeDown.h"
+#include "Commands/ConveyorRun.h"
 
 /**
  *

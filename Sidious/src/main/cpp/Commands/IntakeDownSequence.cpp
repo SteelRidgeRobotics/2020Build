@@ -20,6 +20,7 @@ IntakeDownSequence::IntakeDownSequence() {
      
      AddParallel(new IntakeRun(0.5));
      AddParallel(new IntakeDown());
+     AddParallel(new ConveyorRun(0.2));
      // Add Commands here:
     // e.g. AddSequential(new Command1());
     //      AddSequential(new Command2());

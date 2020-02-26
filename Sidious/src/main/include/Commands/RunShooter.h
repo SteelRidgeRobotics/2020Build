@@ -14,6 +14,7 @@
 #include "frc/commands/Command.h"
 #include "frc/commands/Subsystem.h"
 #include "Robot.h"
+#include "frc/smartdashboard/SmartDashboard.h"
 
 /**
  *
