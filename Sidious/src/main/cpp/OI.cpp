@@ -58,7 +58,7 @@ sc_Y->WhenPressed(new SpinnerPositionControl());
 sc_Rbump.reset(new frc::JoystickButton(systemsController.get(), 6));
 sc_Rbump->WhileHeld(new ClimberWinchRun(0.33));
 sc_B.reset(new frc::JoystickButton(systemsController.get(), 2));
-sc_B->WhileHeld(new RunShooter(250.00));
+sc_B->WhileHeld(new ShootSequence());
 sc_A.reset(new frc::JoystickButton(systemsController.get(), 1));
 sc_A->WhileHeld(new IntakeDownSequence());
 driveController.reset(new frc::Joystick(0));
@@ -66,7 +66,7 @@ driveController.reset(new frc::Joystick(0));
 mc_Rbump.reset(new frc::JoystickButton(driveController.get(), 6));
 mc_Rbump->WhileHeld(new LimelightTrack());
 mc_B.reset(new frc::JoystickButton(driveController.get(), 2));
-mc_B->WhenPressed(new EncoderDrive(0, 0));
+mc_B->WhenPressed(new EncoderDrive(0.0, 0.0));
 
     // SmartDashboard Buttons
     frc::SmartDashboard::PutData("SpinnerControlPiston: in", new SpinnerControlPiston("in"));

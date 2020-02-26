@@ -163,7 +163,7 @@ Children:
         validators: null
         value:
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: velocity,
-          type: double, value: '0'}
+          type: double, value: '0.0'}
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: RunShooter}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
@@ -279,7 +279,7 @@ Children:
         validators: null
         value:
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed, type: double,
-          value: '0'}
+          value: '0.0'}
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: ClimberWinchRun}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
@@ -378,9 +378,9 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: left,
-            type: double, value: '0'}
+            type: double, value: '0.0'}
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: right,
-            type: double, value: '0'}
+            type: double, value: '0.0'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: &id016 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
             '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23',
@@ -647,8 +647,8 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: initial
           parameters:
-          - {name: left, type: double, value: '0'}
-          - {name: right, type: double, value: '0'}
+          - {name: left, type: double, value: '0.0'}
+          - {name: right, type: double, value: '0.0'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command

@@ -41,7 +41,7 @@ bool IntakeRun::IsFinished() {
 
 // Called once after isFinished returns true
 void IntakeRun::End() {
-    
+    Robot::intake->intakeRun(0.0);
     
 }
 

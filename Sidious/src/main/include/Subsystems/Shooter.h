@@ -50,6 +50,8 @@ Shooter();
 
 	double VelocityToTicks(double velocity);
 
+	double TicksToVelocity(double ticks);
+
 //	void manualShooter(std::shared_ptr<frc::Joystick>systemsController);
 
 	double kF = 0.05;
