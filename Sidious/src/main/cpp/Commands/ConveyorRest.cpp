@@ -22,9 +22,9 @@ ConveyorRest::ConveyorRest() {
     //      AddSequential(new Command2());
     // these will run in order.
 
-    AddParallel(new ConveyorRun(0.0));
+    //AddParallel(new ConveyorRun(0.0));
 
-    AddParallel(new ConveyorPistonOut());
+    //AddParallel(new ConveyorPistonOut());
 
 
 

@@ -24,12 +24,13 @@ IntakeUp::IntakeUp(): frc::Command() {
 
 // Called just before this Command runs the first time
 void IntakeUp::Initialize() {
-
+    //Robot::intake->intakeUp();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeUp::Execute() {
     Robot::intake->intakeUp();
+    //Robot::intake->intakeRun(0.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +40,7 @@ bool IntakeUp::IsFinished() {
 
 // Called once after isFinished returns true
 void IntakeUp::End() {
-    
+    //Robot::intake->intakeRun(0.0);
 }
 
 // Called when another command which requires one or more of the same

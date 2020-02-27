@@ -46,11 +46,11 @@ bool LimelightOff::IsFinished() {
 
 // Called once after isFinished returns true
 void LimelightOff::End() {
-
+Robot::vision->setLedMode(1);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LimelightOff::Interrupted() {
-
+End();
 }

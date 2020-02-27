@@ -39,7 +39,7 @@ void AutoTimedCommand::Execute() {
 // Called once after command times out
 void AutoTimedCommand::End() {
 
-    EncoderDrive(5.0, 5.0);
+    EncoderDrive(-5.0, -5.0);
     
 }
 

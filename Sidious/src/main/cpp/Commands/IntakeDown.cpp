@@ -24,13 +24,13 @@ IntakeDown::IntakeDown(): frc::Command() {
 
 // Called just before this Command runs the first time
 void IntakeDown::Initialize() {
-
+    //Robot::intake->intakeDown();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeDown::Execute() {
-    
     Robot::intake->intakeDown();
+    //Robot::intake->intakeRun(0.2);
     
 }
 
@@ -41,11 +41,11 @@ bool IntakeDown::IsFinished() {
 
 // Called once after isFinished returns true
 void IntakeDown::End() {
-    
+    //Robot::intake->intakeRun(0.0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void IntakeDown::Interrupted() {
-
+End();
 }

@@ -52,22 +52,24 @@ systemsController.reset(new frc::Joystick(1));
 
 sc_A.reset(new frc::JoystickButton(systemsController.get(), 1));
 sc_A->WhileHeld(new ClimberWinchRun(0.33333333));
-sc_X.reset(new frc::JoystickButton(systemsController.get(), 3));
-sc_X->WhenPressed(new SpinnerRotationControl());
-sc_Y.reset(new frc::JoystickButton(systemsController.get(), 4));
-sc_Y->WhenPressed(new SpinnerPositionControl());
 sc_Lbump.reset(new frc::JoystickButton(systemsController.get(), 5));
 sc_Lbump->WhileHeld(new ConveyorRun(-0.3));
 sc_Rbump.reset(new frc::JoystickButton(systemsController.get(), 6));
 sc_Rbump->WhileHeld(new ConveyorRun(0.3));
 driveController.reset(new frc::Joystick(0));
 
+mc_Lbump.reset(new frc::JoystickButton(driveController.get(), 5));
+mc_Lbump->WhileHeld(new IntakeRun(-0.3));
+mc_Start.reset(new frc::JoystickButton(driveController.get(), 8));
+mc_Start->WhenPressed(new IntakeDown());
+mc_Home.reset(new frc::JoystickButton(driveController.get(), 7));
+mc_Home->WhenPressed(new IntakeUp());
 mc_X.reset(new frc::JoystickButton(driveController.get(), 3));
-mc_X->WhileHeld(new RunShooter(500.0));
+mc_X->WhileHeld(new RunShooter(6000.0));
 mc_A.reset(new frc::JoystickButton(driveController.get(), 1));
 mc_A->WhileHeld(new LimelightTrack());
 mc_Rbump.reset(new frc::JoystickButton(driveController.get(), 6));
-mc_Rbump->WhileHeld(new IntakeRun(-0.3));
+mc_Rbump->WhileHeld(new IntakeRun(0.3));
 
     // SmartDashboard Buttons
     frc::SmartDashboard::PutData("AutoTimedCommand: Time", new AutoTimedCommand(5000));
@@ -83,10 +85,6 @@ sc_B.reset(new frc::JoystickButton(systemsController.get(), 2));
 sc_B->ToggleWhenPressed(new ClimberPistonOut());
 sc_B->ToggleWhenPressed(new ClimberPistonIn());
 
-mc_Lbump.reset(new frc::JoystickButton(driveController.get(), 5));
-
-mc_Lbump->ToggleWhenPressed(new IntakeDownSequence());
-mc_Lbump->ToggleWhenPressed(new IntakeUpSequence());
 
 //toggle when pressed to save controller space. Works like last years.
 //remember that the sc_Lbump is NOT needed in robotbuilder
