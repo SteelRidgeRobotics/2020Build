@@ -14,9 +14,17 @@
 
 #include "frc/commands/CommandGroup.h"
 
-#include"Commands/RunShooter.h"
+#include "frc/commands/WaitCommand.h"
+
+#include "Commands/RunShooter.h"
+
+#include "Commands/TimedShooter.h"
+
+#include "Commands/TimedConveyor.h"
 
 #include "Commands/ConveyorRun.h"
+
+#include "Commands/EncoderDrive.h"
 
 /**
  *

@@ -32,7 +32,7 @@ void TimedConveyor::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TimedConveyor::Execute() {
 
-    Robot::conveyor->ConveyorRun(0.2);
+    Robot::conveyor->ConveyorRun(0.3);
 }
 
 // Called once after command times out
@@ -45,5 +45,5 @@ void TimedConveyor::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void TimedConveyor::Interrupted() {
-
+    End();
 }

@@ -53,9 +53,9 @@ Shooter();
 
 //	void manualShooter(std::shared_ptr<frc::Joystick>systemsController);
 
-	double kF = 0.05;
+	double kF = 0.06;
 
-	double kP = 0.1;
+	double kP = 0.2;
 
 	double kI = 0.0;
 

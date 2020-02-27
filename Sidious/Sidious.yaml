@@ -121,9 +121,11 @@ Children:
         default: []
         name: Default command parameters
         validators: null
-        value: []
+        value:
+        - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed, type: double,
+          value: '0.0'}
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: IntakeRun}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -267,9 +269,11 @@ Children:
         default: []
         name: Default command parameters
         validators: null
-        value: []
+        value:
+        - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed, type: double,
+          value: '0.0'}
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: ClimberWinchRun}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -671,8 +675,8 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: initial
           parameters:
-          - {name: left, type: double, value: '-5.0'}
-          - {name: right, type: double, value: '-5.0'}
+          - {name: left, type: double, value: '2.0'}
+          - {name: right, type: double, value: '2.0'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
@@ -1103,7 +1107,7 @@ Children:
   - Children: []
     Properties:
       Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Autonomous Selection, validators: null, value: false}
+        name: Autonomous Selection, validators: null, value: true}
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -1184,7 +1188,7 @@ Children:
           parameters:
           - {name: input, type: String, value: out}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: SpinnerControlPiston
   - Children: []
@@ -1265,10 +1269,11 @@ Children:
   - Children: []
     Properties:
       Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Autonomous Selection, validators: null, value: true}
+        name: Autonomous Selection, validators: null, value: false}
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default:
-        - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout, type: double}
+        - &id020 !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
+          type: double}
         name: Parameters
         validators: null
         value:
@@ -1287,7 +1292,7 @@ Children:
           parameters:
           - {name: timeout, type: double, value: '5000'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Timed Command
     Name: AutoTimedCommand
   - Children: []
@@ -1312,6 +1317,54 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: ConveyorStop
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default:
+        - *id020
+        name: Parameters
+        validators: null
+        value:
+        - *id020
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Shooter}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id021 []
+        name: Parameter presets
+        validators: null
+        value: *id021
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Timed Command
+    Name: TimedShooter
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default:
+        - *id020
+        name: Parameters
+        validators: null
+        value:
+        - *id020
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Conveyor}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id022 []
+        name: Parameter presets
+        validators: null
+        value: *id022
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Timed Command
+    Name: TimedConveyor
   Properties: {}
   Base: Commands
   Name: Commands

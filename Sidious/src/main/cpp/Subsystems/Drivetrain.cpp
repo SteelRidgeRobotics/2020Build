@@ -51,8 +51,8 @@ limelightdrive->SetSafetyEnabled(false);
 backLeft->Follow(*frontLeft); //left back to follow left front
 backRight->Follow(*frontRight); //right back to follow right front
 
-frontLeft->SetSensorPhase(true); //Reverse sensors
-frontRight->SetSensorPhase(true); //Reverse sensors
+frontLeft->SetSensorPhase(false); //Reverse sensors
+frontRight->SetSensorPhase(false); //Reverse sensors
 
 backRight->SetInverted(true); //Reverse motor and slave for right side of robot.
 frontRight->SetInverted(true);
@@ -158,6 +158,12 @@ limelightdrive->ArcadeDrive(move, turn, false);
 
 void Drivetrain::encoderPosition(double left, double right)
 {
+	double l_data = frontLeft->GetSelectedSensorPosition();
+	double r_data = frontRight->GetSelectedSensorPosition();
+	l_data = rotationsToFt(l_data);
+	r_data = rotationsToFt(r_data);
+	frc::SmartDashboard::PutNumber("L_Position", l_data);
+	frc::SmartDashboard::PutNumber("R_Position", r_data);
 	frontLeft->Set(ControlMode::Position, ftToRotations(left));
 	frontRight->Set(ControlMode::Position, ftToRotations(right));
 
@@ -182,7 +188,7 @@ void Drivetrain::encoderReset() {
 }
 
 bool Drivetrain::isMove() {
-	if ((frontLeft->GetSelectedSensorPosition(0) < (l_pos + .1) && frontLeft->GetSelectedSensorPosition(0) > (l_pos - .1)) && frontRight->GetSelectedSensorPosition(0) < (r_pos + .1) && frontRight->GetSelectedSensorPosition(0) > (r_pos - .1)) {
+	if ((frontLeft->GetSelectedSensorPosition() < (l_pos + .1) && frontLeft->GetSelectedSensorPosition() > (l_pos - .1)) && frontRight->GetSelectedSensorPosition(0) < (r_pos + .1) && frontRight->GetSelectedSensorPosition(0) > (r_pos - .1)) {
 			return true;
 		} else {
 			return false;
@@ -191,4 +197,8 @@ bool Drivetrain::isMove() {
 
 double Drivetrain::ftToRotations(double ft){
 	return ft*kGearRatio*kSensorUnitsPerRotation*(1/kWheelDiam)*(1/M_PI);
+}
+
+double Drivetrain::rotationsToFt(double rotations){
+	return rotations/kGearRatio/kSensorUnitsPerRotation/(1/kWheelDiam)/(1/M_PI);
 }
