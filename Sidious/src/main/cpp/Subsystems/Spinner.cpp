@@ -26,7 +26,7 @@ Spinner::Spinner() : frc::Subsystem("Spinner") {
 spinnerMotor.reset(new WPI_TalonSRX(8));
 
 
-spinnerSolenoid.reset(new frc::DoubleSolenoid(0, 4, 5));
+spinnerSolenoid.reset(new frc::DoubleSolenoid(0, 0, 7));
 AddChild("SpinnerSolenoid", spinnerSolenoid);
 
 

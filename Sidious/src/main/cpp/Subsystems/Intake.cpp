@@ -24,7 +24,7 @@ Intake::Intake() : frc::Subsystem("Intake") {
 intakeMotor.reset(new frc::VictorSP(0));
 AddChild("IntakeMotor", std::static_pointer_cast<frc::VictorSP>(intakeMotor));
 
-intakeSolenoid.reset(new frc::DoubleSolenoid(0, 2, 3));
+intakeSolenoid.reset(new frc::DoubleSolenoid(0, 2, 5));
 AddChild("IntakeSolenoid", intakeSolenoid);
 
 

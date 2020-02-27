@@ -32,13 +32,11 @@ void TimedConveyorPistonIn::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TimedConveyorPistonIn::Execute() {
 
-    Robot::conveyor->ConveyorPistonIn();
 }
 
 // Called once after command times out
 void TimedConveyorPistonIn::End() {
 
-    Robot::conveyor->ConveyorPistonOut();
 
 }
 

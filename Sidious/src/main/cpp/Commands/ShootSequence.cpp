@@ -22,8 +22,6 @@ ShootSequence::ShootSequence() {
 
      AddSequential(new RunShooter(3000.0));
 
-     AddSequential(new ConveyorPistonIn());
-
      AddSequential(new ConveyorRun(0.2));
 
     //      AddSequential(new Command2());
