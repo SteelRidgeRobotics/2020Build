@@ -71,3 +71,4 @@ void Intake::intakeRun(double speed)
     intakeMotor->Set(speed);
 
 }
+
