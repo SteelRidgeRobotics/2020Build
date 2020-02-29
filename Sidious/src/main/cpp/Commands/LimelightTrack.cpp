@@ -31,12 +31,13 @@ Robot::vision->setCameraMode(0);
 Robot::vision->setLedMode(3);
 Robot::vision->setPipeline(1);
 
-m_steeringKP = frc::SmartDashboard::GetNumber("Steering KP", 0.0);
+/*m_steeringKP = frc::SmartDashboard::GetNumber("Steering KP", 0.0);
 m_targetArea = frc::SmartDashboard::GetNumber("min TA", 0.0);
 m_driveKP = frc::SmartDashboard::GetNumber("Driving KP", 0.0);
 
 frc::SmartDashboard::PutNumber("Left", 10000);
 frc::SmartDashboard::PutNumber("Right", 10000);
+*/
 
 }
 

@@ -373,7 +373,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: velocity,
-            type: double, value: '5000.0'}
+            type: double, value: '5500.0'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id014
           default: '1'
@@ -628,6 +628,10 @@ Children:
           name: stop
           parameters:
           - {name: velocity, type: double, value: '0.0'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: speed
+          parameters:
+          - {name: velocity, type: double, value: '5000.0'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
