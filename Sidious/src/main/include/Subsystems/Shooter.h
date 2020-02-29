@@ -55,7 +55,7 @@ Shooter();
 
 	double kF = 0.06;
 
-	double kP = 0.2;
+	double kP = 0.08;
 
 	double kI = 0.0;
 

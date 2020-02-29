@@ -52,15 +52,15 @@ frc::SmartDashboard::PutNumber("Steer", steer);
     if (Robot::vision->getTv()) 
     {
       if (Robot::vision->getTa() >= m_targetArea) 
-      {
-        drive = 0;
-        steer = 0;
+      { 
+        drive = 0.0;
+        steer = 0.0;
       }
     } 
     else
     {
-     drive = 0;
-     steer = 0.2;
+     drive = 0.0;
+     steer = 0.0;
     }
 
     Robot::drivetrain->autoDrive(drive, steer);
@@ -73,8 +73,11 @@ bool LimelightTrack::IsFinished() {
 
 // Called once after isFinished returns true
 void LimelightTrack::End() {
-    Robot::drivetrain->autoDrive(0.0, 0.0);
     Robot::vision->setLedMode(0);
+
+    Robot::drivetrain->stopMotors();
+    Robot::drivetrain->setInvert(false, true);
+    Robot::drivetrain->initMotors();
 
 }
 

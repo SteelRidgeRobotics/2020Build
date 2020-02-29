@@ -18,6 +18,7 @@
 #include "Commands/ClimberPistonIn.h"
 #include "Commands/ClimberPistonOut.h"
 #include "Commands/ClimberWinchRun.h"
+#include "Commands/ConveyorDriveWithJoysticks.h"
 #include "Commands/ConveyorPistonIn.h"
 #include "Commands/ConveyorPistonOut.h"
 #include "Commands/ConveyorRest.h"
@@ -58,14 +59,10 @@ sc_X.reset(new frc::JoystickButton(systemsController.get(), 3));
 sc_X->WhileHeld(new ClimberWinchRun(0.333333333));
 sc_A.reset(new frc::JoystickButton(systemsController.get(), 1));
 sc_A->WhileHeld(new IntakeRun(-0.5));
-sc_Lbump.reset(new frc::JoystickButton(systemsController.get(), 5));
-sc_Lbump->WhileHeld(new ConveyorRun(-0.3));
-sc_Rbump.reset(new frc::JoystickButton(systemsController.get(), 6));
-sc_Rbump->WhileHeld(new ConveyorRun(0.3));
 driveController.reset(new frc::Joystick(0));
 
 mc_X.reset(new frc::JoystickButton(driveController.get(), 3));
-mc_X->WhileHeld(new RunShooter(6000.0));
+mc_X->WhileHeld(new RunShooter(5000.0));
 mc_A.reset(new frc::JoystickButton(driveController.get(), 1));
 mc_A->WhileHeld(new LimelightTrack());
 
@@ -80,7 +77,7 @@ sc_B.reset(new frc::JoystickButton(systemsController.get(), 2));
 sc_B->ToggleWhenPressed(new ClimberPistonOut());
 sc_B->ToggleWhenPressed(new ClimberPistonIn());
 
-sc_LJoyButton.reset(new frc::JoystickButton(systemsController.get(), 9));
+sc_LJoyButton.reset(new frc::JoystickButton(systemsController.get(), 7));
 
 sc_LJoyButton->ToggleWhenPressed(new IntakeDown());
 sc_LJoyButton->ToggleWhenPressed(new IntakeUp());

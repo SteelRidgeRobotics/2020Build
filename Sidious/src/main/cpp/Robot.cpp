@@ -46,6 +46,11 @@ conveyor.reset(new Conveyor());
 	// news. Don't move it.
 	oi.reset(new OI());
 
+	cs::UsbCamera camera = frc::CameraServer::GetInstance()->StartAutomaticCapture();
+
+	camera.SetResolution(400,400);
+	camera.SetFPS(15);
+
 	HAL_Report(HALUsageReporting::kResourceType_Framework,
 		HALUsageReporting::kFramework_RobotBuilder);
 

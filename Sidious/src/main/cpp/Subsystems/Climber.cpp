@@ -56,12 +56,12 @@ void Climber::Periodic() {
 
 void Climber::PistonsOut()
 {
-    climberSolenoid->Set(frc::DoubleSolenoid::kForward);
+    climberSolenoid->Set(frc::DoubleSolenoid::kReverse);
 }
 
 void Climber::PistonsIn()
 {
-    climberSolenoid->Set(frc::DoubleSolenoid::kReverse);
+    climberSolenoid->Set(frc::DoubleSolenoid::kForward);
 }
 
 void Climber::WinchRun(double speed)

@@ -156,6 +156,36 @@ limelightdrive->ArcadeDrive(move, turn, false);
 
 }
 
+void Drivetrain::setInvert(bool left_bool, bool right_bool)
+{
+	frontRight->SetInverted(right_bool);
+	backRight->SetInverted(right_bool);
+
+	frontLeft->SetInverted(left_bool);
+	backLeft->SetInverted(left_bool);
+
+	
+}
+
+void Drivetrain::stopMotors()
+{
+	frontRight->Set(ControlMode::PercentOutput, 0.0);
+	frontLeft->Set(ControlMode::PercentOutput, 0.0);
+}
+
+void Drivetrain::initMotors()
+{
+	backLeft->Follow(*frontLeft);
+	backRight->Follow(*frontRight);
+
+	frontLeft->SetNeutralMode(NeutralMode::Brake);
+	backLeft->SetNeutralMode(NeutralMode::Brake);
+	frontRight->SetNeutralMode(NeutralMode::Brake);
+	backRight->SetNeutralMode(NeutralMode::Brake);
+
+
+}
+
 void Drivetrain::encoderPosition(double left, double right)
 {
 	double l_data = frontLeft->GetSelectedSensorPosition();

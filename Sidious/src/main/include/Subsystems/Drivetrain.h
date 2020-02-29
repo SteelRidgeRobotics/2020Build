@@ -59,6 +59,12 @@ Drivetrain();
 
 	void autoDrive(double move, double turn); //Method to drive robot using lime light.
 
+	void setInvert(bool left_bool, bool right_bool);
+
+	void stopMotors();
+
+	void initMotors();
+
 	void encoderPosition(double left, double right); //Method to move robot a distance using encoders.
 
 	void encoderDone();
@@ -89,7 +95,7 @@ Drivetrain();
 
 	static constexpr double kF_CloopLeft = 0.0; //Feed forward gain
 
-	static constexpr double kP_CloopLeft = 1.42; //Proportional gain. This is just a start and needs tuning.
+	static constexpr double kP_CloopLeft = 1.0; //Proportional gain. This is just a start and needs tuning.
 
 	static constexpr double kI_CloopLeft = 0.0; //Integral gain
 
@@ -97,7 +103,7 @@ Drivetrain();
 
 	static constexpr double kF_CloopRight = 0.0; //Feed forward gain
 
-	static constexpr double kP_CloopRight = 1.42; //Proportional gain. This is just a start and needs tuning.
+	static constexpr double kP_CloopRight = 1.0; //Proportional gain. This is just a start and needs tuning.
 
 	static constexpr double kI_CloopRight = 0.0; //Integral gain
 
