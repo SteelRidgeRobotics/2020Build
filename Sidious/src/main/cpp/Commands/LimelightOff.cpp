@@ -28,14 +28,18 @@ LimelightOff::LimelightOff(): frc::Command() {
 void LimelightOff::Initialize() {
 
 std::cout << "Limelight Off!" << std::endl;
-Robot::vision->setLedMode(1);
+
+Robot::vision->setCameraMode(0);
+Robot::vision->setLedMode(3);
+Robot::vision->setPipeline(1);
 
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LimelightOff::Execute() {
 
-Robot::vision->setLedMode(1);
+frc::SmartDashboard::PutNumber("Target Area", Robot::vision->getTa());
+frc::SmartDashboard::PutNumber("Horizontal Offset", Robot::vision->getTx());
 
 }
 
@@ -46,7 +50,7 @@ bool LimelightOff::IsFinished() {
 
 // Called once after isFinished returns true
 void LimelightOff::End() {
-Robot::vision->setLedMode(1);
+Robot::vision->setLedMode(3);
 }
 
 // Called when another command which requires one or more of the same

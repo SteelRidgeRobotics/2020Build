@@ -67,6 +67,12 @@ Shooter();
 
 	double kGearRatio = 0.75;
 
+	double VelocityAtInitLine = 5500.0;
+
+	double VelocityAtTrenchRun;
+
+	double VelocityAtRendezvousPoint;
+
 
 
 

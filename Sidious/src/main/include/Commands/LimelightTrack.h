@@ -43,7 +43,7 @@ private:
 // Constants: tune driving and steering control constants
 double m_steeringKP = 0.055;
 double m_targetArea = 2.1;
-double m_driveKP = 0.80;
+double m_driveKP = 1.0;
 
 
 };

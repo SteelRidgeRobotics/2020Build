@@ -64,7 +64,7 @@ sc_A->WhileHeld(new IntakeRun(-0.5));
 driveController.reset(new frc::Joystick(0));
 
 mc_X.reset(new frc::JoystickButton(driveController.get(), 3));
-mc_X->WhileHeld(new RunShooter(5500.0));
+mc_X->WhileHeld(new RunShooter(6000.0));
 mc_A.reset(new frc::JoystickButton(driveController.get(), 1));
 mc_A->WhileHeld(new LimelightTrack());
 

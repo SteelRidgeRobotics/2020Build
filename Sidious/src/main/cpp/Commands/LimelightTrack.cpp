@@ -45,10 +45,11 @@ frc::SmartDashboard::PutNumber("Right", 10000);
 void LimelightTrack::Execute() {
 
 double steer = Robot::vision->getTx()*m_steeringKP; // Right Y
-double drive  = (m_targetArea-Robot::vision->getTa())*m_driveKP; // Left X
+double drive  = -1*(m_targetArea-Robot::vision->getTa())*m_driveKP; // Left X
 frc::SmartDashboard::PutNumber("target area", Robot::vision->getTa());
 frc::SmartDashboard::PutNumber("Drive", drive);
 frc::SmartDashboard::PutNumber("Steer", steer);
+frc::SmartDashboard::PutNumber("Horizontal Offset", Robot::vision->getTx());
 
     if (Robot::vision->getTv()) 
     {
@@ -64,7 +65,7 @@ frc::SmartDashboard::PutNumber("Steer", steer);
      steer = 0.0;
     }
 
-    Robot::drivetrain->autoDrive(drive, steer);
+    Robot::drivetrain->autoDrive(steer, drive);
   }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -74,7 +75,7 @@ bool LimelightTrack::IsFinished() {
 
 // Called once after isFinished returns true
 void LimelightTrack::End() {
-    Robot::vision->setLedMode(0);
+    //Robot::vision->setLedMode(3);
 
     Robot::drivetrain->stopMotors();
     Robot::drivetrain->setInvert(false, true);
