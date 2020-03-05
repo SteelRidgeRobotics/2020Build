@@ -119,16 +119,34 @@ return distance;
 void Vision::setCameraMode(int input)
 {
     table->PutNumber("cameraMode", input);
+
+/*
+    Camera mode:
+        0 = use the LED Mode set in the current pipeline
+        1 = Driver Camera (Increase exposure, dsables vision procesesing)
+*/
 }
 
 void Vision::setLedMode(int input)
 {
     table->PutNumber("ledMode", input);
+
+/*
+    Led Mode:
+    1 = force off
+    2 = force blink
+    3 force on
+*/
 }
 
 void Vision::setPipeline(int input)
 {
     table->PutNumber("pipeline", input);
+
+/*  
+sets the pipeline, (0-9)  
+*/
+
 }
 
 void Vision::setStream(int input)

@@ -34,6 +34,7 @@
 #include "Commands/LimelightOff.h"
 #include "Commands/LimelightTrack.h"
 #include "Commands/RunShooter.h"
+#include "Commands/SetVelocityWithLimelight.h"
 #include "Commands/ShootSequence.h"
 #include "Commands/SpinnerControlPiston.h"
 #include "Commands/SpinnerPositionControl.h"
@@ -64,7 +65,7 @@ sc_A->WhileHeld(new IntakeRun(-0.5));
 driveController.reset(new frc::Joystick(0));
 
 mc_X.reset(new frc::JoystickButton(driveController.get(), 3));
-mc_X->WhileHeld(new RunShooter(6000.0));
+mc_X->WhileHeld(new SetVelocityWithLimelight());
 mc_A.reset(new frc::JoystickButton(driveController.get(), 1));
 mc_A->WhileHeld(new LimelightTrack());
 
