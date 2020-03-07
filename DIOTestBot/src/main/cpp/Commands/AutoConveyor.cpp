@@ -53,7 +53,7 @@ void AutoConveyor::Execute() {
         Robot::conveyor->ControlMotor(0.0);
     }
     else{
-        Robot::conveyor->ControlSolenoid("forward");
+        Robot::conveyor->ControlSolenoid("reverse");
         Robot::conveyor->ControlMotor(0.0);
     }
 
