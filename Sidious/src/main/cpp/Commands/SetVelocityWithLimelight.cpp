@@ -45,13 +45,14 @@ Robot::vision->setPipeline(1);
 // Called repeatedly when this Command is scheduled to run
 void SetVelocityWithLimelight::Execute() {
 
-double xOffsetGoal = 1.0;
+double xOffsetGoal = 3.0;   //this is the angle we want to be within when we shoot. we may never get there is speed factor is too low suffer
 double m_steeringKP = 0.055;
 double m_driveKP = 1.0;
+double speedFactor = 0.5;
 
-while(Robot::vision->getTx() > xOffsetGoal){
+while(Robot::vision->getTx() > xOffsetGoal || Robot::vision->getTx() < -1.0*xOffsetGoal){
 
-double steer = Robot::vision->getTx()*m_steeringKP; // Right Y
+double steer = Robot::vision->getTx()*m_steeringKP*speedFactor; // Right Y
 frc::SmartDashboard::PutNumber("target area", Robot::vision->getTa());
 frc::SmartDashboard::PutNumber("Steer", steer);
 frc::SmartDashboard::PutNumber("Horizontal Offset", Robot::vision->getTx());
