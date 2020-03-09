@@ -46,30 +46,30 @@ limelightdrive.reset(new frc::DifferentialDrive(*leftside, *rightside));
 AddChild("Limelight Drive", limelightdrive);
 limelightdrive->SetSafetyEnabled(false);
 
-
-
-backLeft->Follow(*frontLeft); //left back to follow left front
-backRight->Follow(*frontRight); //right back to follow right front
-
 frontLeft->SetSensorPhase(false); //Reverse sensors
 frontRight->SetSensorPhase(false); //Reverse sensors
 
 backRight->SetInverted(true); //Reverse motor and slave for right side of robot.
 frontRight->SetInverted(true);
 
-frontLeft->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, kTimeoutMs);
-frontRight->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, kTimeoutMs);
+frontLeft->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, PIDIdx, kTimeoutMs);
+frontRight->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, PIDIdx, kTimeoutMs);
+
+initMotors();
+//Set Neutral modes to brake
+
 
 /*
-* Set Neutral modes to brake
-*/
+backLeft->Follow(*frontLeft); //left back to follow left front
+backRight->Follow(*frontRight); //right back to follow right front
 
 frontLeft->SetNeutralMode(NeutralMode::Brake);
 backLeft->SetNeutralMode(NeutralMode::Brake);
 frontRight->SetNeutralMode(NeutralMode::Brake);
 backRight->SetNeutralMode(NeutralMode::Brake);
+*/
 
-/* Configure PID_F for Closed Loop */
+//Configure PID_F for Closed Loop
 
 frontLeft->Config_kF(kSlotIDx_Cloop, kF_CloopLeft, kTimeoutMs);
 frontLeft->Config_kP(kSlotIDx_Cloop, kP_CloopLeft, kTimeoutMs);
@@ -81,22 +81,7 @@ frontRight->Config_kP(kSlotIDx_Cloop, kP_CloopRight, kTimeoutMs);
 frontRight->Config_kI(kSlotIDx_Cloop, kI_CloopRight, kTimeoutMs);
 frontRight->Config_kD(kSlotIDx_Cloop, kD_CloopRight, kTimeoutMs);
 
-     /*Configure PID_F for Motion Profile */
-/*
-frontLeft->Config_kF(kSlotIDx_Motion, kF_MotionLeft, kTimeoutMs);
-frontLeft->Config_kP(kSlotIDx_Motion, kP_MotionLeft, kTimeoutMs);
-frontLeft->Config_kI(kSlotIDx_Motion, kI_MotionLeft, kTimeoutMs);
-frontLeft->Config_kD(kSlotIDx_Motion, kD_MotionLeft, kTimeoutMs);
-
-frontRight->Config_kF(kSlotIDx_Motion, kF_MotionRight, kTimeoutMs);
-frontRight->Config_kP(kSlotIDx_Motion, kP_MotionRight, kTimeoutMs);
-frontRight->Config_kI(kSlotIDx_Motion, kI_MotionRight, kTimeoutMs);
-frontRight->Config_kD(kSlotIDx_Motion, kD_MotionRight, kTimeoutMs);
-*/
-
 }
-
-
 
 void Drivetrain::InitDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -122,24 +107,15 @@ void Drivetrain::Periodic() {
 // here. Call these from Commands.
 
 void Drivetrain::userDrive(std::shared_ptr<frc::Joystick>mainController){
-
 	double left_y = - 1 * mainController->GetRawAxis(1);
 	double right_y = - 1 * mainController->GetRawAxis(5);
-
-	if( fabs(left_y) < 0.1){
-
-		left_y = 0;
-	}
+  	bool l_bump = mainController->GetRawButton(5);
 
 
-	if( fabs(right_y) < 0.1 ){
+	if( fabs(left_y) < 0.1)   left_y = 0;
+	if( fabs(right_y) < 0.1)   right_y = 0;
 
-		right_y = 0;
-	}
-
-	int l_bump = mainController->GetRawButton(5);
-
-	if(l_bump == true)
+	if(l_bump)
 	{
 		left_y = slowFactor * left_y;
 		right_y = slowFactor * right_y;
@@ -147,35 +123,26 @@ void Drivetrain::userDrive(std::shared_ptr<frc::Joystick>mainController){
 
 	frontLeft->Set(ControlMode::PercentOutput, left_y);
 	frontRight->Set(ControlMode::PercentOutput, right_y);
-
 }
 
-void Drivetrain::autoDrive(double move, double turn)
-{
-
+void Drivetrain::autoDrive(double move, double turn){
 limelightdrive->ArcadeDrive(move, turn, false);
-
 }
 
-void Drivetrain::setInvert(bool left_bool, bool right_bool)
-{
+void Drivetrain::setInvert(bool left_bool, bool right_bool){
 	frontRight->SetInverted(right_bool);
 	backRight->SetInverted(right_bool);
 
 	frontLeft->SetInverted(left_bool);
 	backLeft->SetInverted(left_bool);
-
-	
 }
 
-void Drivetrain::stopMotors()
-{
+void Drivetrain::stopMotors(){
 	frontRight->Set(ControlMode::PercentOutput, 0.0);
 	frontLeft->Set(ControlMode::PercentOutput, 0.0);
 }
 
-void Drivetrain::initMotors()
-{
+void Drivetrain::initMotors(){
 	backLeft->Follow(*frontLeft);
 	backRight->Follow(*frontRight);
 
@@ -183,23 +150,16 @@ void Drivetrain::initMotors()
 	backLeft->SetNeutralMode(NeutralMode::Brake);
 	frontRight->SetNeutralMode(NeutralMode::Brake);
 	backRight->SetNeutralMode(NeutralMode::Brake);
-
-
 }
 
-void Drivetrain::encoderPosition(double left, double right)
-{
-	double l_data = frontLeft->GetSelectedSensorPosition();
-	double r_data = frontRight->GetSelectedSensorPosition();
-	l_data = rotationsToFt(l_data);
-	r_data = rotationsToFt(r_data);
-	frc::SmartDashboard::PutNumber("L_Position", l_data);
-	frc::SmartDashboard::PutNumber("R_Position", r_data);
+void Drivetrain::encoderPosition(double left, double right){
+    l_pos = left;
+	r_pos = right;	
+
 	frontLeft->Set(ControlMode::Position, ftToRotations(left));
 	frontRight->Set(ControlMode::Position, ftToRotations(right));
 
-	l_pos = left;
-	r_pos = right;	
+    sendDataToSD();
 }
 
 
@@ -209,7 +169,6 @@ void Drivetrain::encoderDone() {
     
     l_pos = 0.0;
 	r_pos = 0.0;
-
 }
 
 void Drivetrain::encoderReset() {
@@ -232,4 +191,13 @@ double Drivetrain::ftToRotations(double ft){
 
 double Drivetrain::rotationsToFt(double rotations){
 	return rotations/kGearRatio/kSensorUnitsPerRotation/(1/kWheelDiam)/(1/M_PI);
+}
+
+void Drivetrain::sendDataToSD(){
+	double l_data = frontLeft->GetSelectedSensorPosition();
+	double r_data = frontRight->GetSelectedSensorPosition();
+	l_data = rotationsToFt(l_data);
+	r_data = rotationsToFt(r_data);
+	frc::SmartDashboard::PutNumber("L_Position", l_data);
+	frc::SmartDashboard::PutNumber("R_Position", r_data);
 }

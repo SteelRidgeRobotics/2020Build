@@ -1,0 +1,78 @@
+controller inputs(old project):
+MC:	
+	A: limelight track
+	X: set velocity with limelight
+	l_bump: slowDrive(not command)
+
+	l_joy: left side control
+	r_joy: right side control
+
+SC:
+	A: intake run 
+	X: climber winch run 
+	Y: intake reverse
+	B: climber piston control (twp out, in)
+	Back: intake piston control(twp up, down)
+
+	l_trigger: reverse conveyor
+	l_trigger: forward conveyor
+
+changes to drivetrain:
+Got rid of some junk/ needless redundancy. Made the 
+methods more pretty and I tried to optimize things a bit.
+
+changes to vision:
+Got rid of some unused methods like Ts and deleted the 
+declarations and definitions that were made in Vision
+periodic ad they weren't used for anything. also got rid
+of the get distance method as we never use it. it's pretty
+easy to add in if we ever need it in the future
+
+changes in climber:
+got rid of the solenoid and the attached command, as with
+the new climber, we dont use any pistons, and we need to 
+add a new motor controller to climber as well as with the
+new design we require 2 motors.
+
+changes with intake: 
+I want to attempt to use a command group with the intake
+once again, because we have more time to test and I have
+a better understanding of how it would work out.
+
+changes to shooter:
+we are pivoting to using a limelight + drivetrain + shooter
+system to aim and rev the shooter from now on, but we have 
+already started prototyping this with the original sidious
+project
+
+changes to conveyor:
+we are pivoting to an automated conveyor to remove stress
+from the drivers, and we need to test this new system when
+we get time. this means merging the DIO test bot and the 
+sidious project, which shouldn't be too difficult. this new
+system will use a timer, which is new to me, but from what
+i've read should be pretty simple. we also need to have 
+controls correctly set up the sensor before we can begin
+testing
+
+For testing:
+we need to test all the new features that are being added
+to the robot(climber if its finished, and conveyor). we
+also need to test all of the subsystems becuase of the
+changes i made for optimizations. auto routines too. 
+we'll need a whole day for this (I assume) preferabley 
+3/11 or first day of comp (eek!)
+
+Project Progress:
+
+drivetrain: done
+intake: done
+shooter: done
+conveyor: done
+vision: done
+climber: done
+Robot: done
+oi: done
+Commands:
+libraries?:
+ 
