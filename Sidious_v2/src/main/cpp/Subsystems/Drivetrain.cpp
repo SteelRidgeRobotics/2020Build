@@ -107,16 +107,15 @@ void Drivetrain::Periodic() {
 // here. Call these from Commands.
 
 void Drivetrain::userDrive(std::shared_ptr<frc::Joystick>mainController){
-	double left_y = - 1 * mainController->GetRawAxis(1);
-	double right_y = - 1 * mainController->GetRawAxis(5);
+	double left_y = - 1.0 * mainController->GetRawAxis(1);
+	double right_y =  1.0 * mainController->GetRawAxis(5);
   	bool l_bump = mainController->GetRawButton(5);
 
 
 	if( fabs(left_y) < 0.1)   left_y = 0;
 	if( fabs(right_y) < 0.1)   right_y = 0;
 
-	if(l_bump)
-	{
+	if(l_bump){
 		left_y = slowFactor * left_y;
 		right_y = slowFactor * right_y;
 	}
