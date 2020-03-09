@@ -30,7 +30,7 @@ void ConveyorOveride::Initialize() {
 void ConveyorOveride::Execute() {
 
     Robot::conveyor->ControlSolenoid("reverse");
-    Robot::conveyor->ControlMotor(0.0);
+    Robot::conveyor->ControlMotor(0.4);
 
     //this would be used when we shoot, and don't want to wait for serializing to start.
 

@@ -48,7 +48,7 @@ void AutoConveyor::Execute() {
     if(sensorState){
         Robot::conveyor->ControlSolenoid("forward");
         while(initTime < targetTime){   //maybe we need to have this be an if loop... I dont know how freezing the thread will effect the robot.
-            Robot::conveyor->ControlMotor(0.2);
+            Robot::conveyor->ControlMotor(0.4);
         }
         Robot::conveyor->ControlMotor(0.0);
     }
