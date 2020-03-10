@@ -24,6 +24,8 @@ ConveyorOveride::ConveyorOveride(): frc::Command() {
 // Called just before this Command runs the first time
 void ConveyorOveride::Initialize() {
 
+Robot::conveyor->SetCounter(0);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
