@@ -30,7 +30,7 @@ void LimelightOff::Initialize() {
 std::cout << "Limelight Off!" << std::endl;
 
 Robot::vision->setCameraMode(0);
-Robot::vision->setLedMode(3);
+Robot::vision->setLedMode(1);
 Robot::vision->setPipeline(1);
 
 }
